@@ -1,0 +1,141 @@
+# Copyright (C) 2012 bbPress Digest
+# This file is distributed under the same license as the bbPress Digest package.
+msgid ""
+msgstr ""
+"Project-Id-Version: bbPress Digest 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/bbpress-digest\n"
+"POT-Creation-Date: 2012-02-26 20:45:51+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: inc/event.php:81
+msgid "Active topics for %1$s"
+msgstr ""
+
+#: inc/event.php:81
+msgctxt "one day span email title date format"
+msgid "d. F Y."
+msgstr ""
+
+#: inc/event.php:83
+msgctxt "1. Yesterday 2. Today"
+msgid "Active topics for %1$s / %2$s"
+msgstr ""
+
+#: inc/event.php:83
+msgctxt "two day span yesterday email title date format"
+msgid "d. F Y."
+msgstr ""
+
+#: inc/event.php:83
+msgctxt "one day span today email title date format"
+msgid "d. F Y."
+msgstr ""
+
+#: inc/event.php:87
+msgid ""
+"This topics have been active in the last 24 hours:\n"
+"\n"
+msgstr ""
+
+#: inc/event.php:90
+msgctxt "1. Topic title 2. Topic URL"
+msgid "%1$s: %2$s\n"
+msgstr ""
+
+#: inc/forums-list.php:214
+msgid "No topics available"
+msgstr ""
+
+#: inc/forums-list.php:219
+msgid "No forums available"
+msgstr ""
+
+#: inc/forums-list.php:224
+msgid "None available"
+msgstr ""
+
+#: inc/bbp-profile.php:50 inc/wp-profile.php:28
+msgid "bbPress Digest Emails"
+msgstr ""
+
+#: inc/bbp-profile.php:55 inc/wp-profile.php:36
+msgctxt "checkbox label"
+msgid "Yes"
+msgstr ""
+
+#: inc/bbp-profile.php:56 inc/wp-profile.php:37
+msgid ""
+"Check if you want to receive daily digest with active forum topics for that "
+"day."
+msgstr ""
+
+#: inc/bbp-profile.php:60 inc/wp-profile.php:45
+msgid "Daily digests should be sent at this time:"
+msgstr ""
+
+#: inc/bbp-profile.php:67 inc/wp-profile.php:52
+msgid ""
+"Select the hour of the day when you want to receive digest emails. Current "
+"time is <code>%1$s</code>."
+msgstr ""
+
+#: inc/bbp-profile.php:67 inc/wp-profile.php:52
+msgctxt "current time date format"
+msgid "Y-m-d G:i:s"
+msgstr ""
+
+#: inc/bbp-profile.php:72 inc/wp-profile.php:61
+msgctxt "radio button label"
+msgid "All"
+msgstr ""
+
+#: inc/bbp-profile.php:73 inc/wp-profile.php:62
+msgid "Only forums I choose"
+msgstr ""
+
+#: inc/bbp-profile.php:74 inc/wp-profile.php:63
+msgid ""
+"Choose should digest include topics from all forums or only from selected "
+"forums."
+msgstr ""
+
+#: inc/bbp-profile.php:84 inc/wp-profile.php:73
+msgid "Choose forums which you want to be included in a digest."
+msgstr ""
+
+#: inc/wp-profile.php:33
+msgid "Daily digest"
+msgstr ""
+
+#: inc/wp-profile.php:42
+msgid "Daily digest time"
+msgstr ""
+
+#: inc/wp-profile.php:57
+msgid "Forums"
+msgstr ""
+
+#: bbpress-digest.php:99
+msgid "Donate"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "bbPress Digest"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Send daily digest with forum's active topics."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Milan Dinić"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://blog.milandinic.com/"
+msgstr ""
