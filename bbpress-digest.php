@@ -11,14 +11,14 @@
 
 /**
  * Plugin Name: bbPress Digest
- * Plugin URI: http://blog.milandinic.com/wordpress/plugins/bbpress-digest/
+ * Plugin URI:  http://blog.milandinic.com/wordpress/plugins/bbpress-digest/
  * Description: Send daily digest with forum's active topics.
  * Author:      Milan Dinić
  * Author URI:  http://blog.milandinic.com/
- * Version:     1.0
+ * Version:     2.0-alfa-1
  * Text Domain: bbp-digest
  * Domain Path: /languages/
- * License: GPL
+ * License:     GPL
  */
 
 /* Exit if accessed directly */
@@ -63,6 +63,23 @@ function bbp_digest_uninstall() {
 	delete_metadata( 'user', null, 'bbp_digest_forums', '', true );
 }
 register_uninstall_hook( __FILE__, 'bbp_digest_uninstall' );
+
+/**
+ * Register actions on init hook
+ *
+ * @since 2.0
+ */
+function bbp_digest_init() {
+	/* Show one-click subscription */
+	if ( bbp_is_single_forum() || is_user_logged_in() ) {
+		add_action( 'bbp_head', 'bbp_digest_head_scripts' );
+		add_action( 'bbp_template_after_topics_loop', 'bbp_digest_one_click_subscription' );
+	}
+
+	/* Handle one-click subscription */
+	add_action( 'wp_ajax_dim-bbp-digest-subscription', 'bbp_digest_one_click_ajax_handle' );
+}
+add_action( 'init', 'bbp_digest_init' );
 
 /**
  * Load textdomain for internationalization
@@ -173,3 +190,44 @@ function bbp_digest_bbp_profile_fields() {
 	bbp_digest_display_bbp_profile_fields();
 }
 add_action( 'bbp_user_edit_after', 'bbp_digest_bbp_profile_fields' );
+
+/**
+ * Show one-click subscription on a single forum
+ *
+ * @since 2.0
+ */
+function bbp_digest_one_click_subscription() {
+	/* Load translations */
+	bbp_digest_load_textdomain();
+	/* Load file with template function */
+	require_once( dirname( __FILE__ ) . '/inc/one-click-template.php' );
+	/* Display template */
+	bbp_digest_display_one_click_subscription();
+}
+
+/**
+ * Handle one-click subscription submission
+ *
+ * @since 2.0
+ */
+function bbp_digest_one_click_ajax_handle() {
+	/* Load file with function for saving */
+	require_once( dirname( __FILE__ ) . '/inc/one-click-handle.php' );
+	/* Do handling */
+	bbp_digest_do_one_click_ajax_handle();
+}
+
+/**
+ * Show Javascript in a head of a page
+ *
+ * @since 2.0
+ */
+function bbp_digest_head_scripts() {
+	?>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
+		/* ]]> */
+	</script>
+	<?php
+}
