@@ -15,7 +15,7 @@
  * Description: Send daily digest with forum's active topics.
  * Author:      Milan Dinić
  * Author URI:  http://blog.milandinic.com/
- * Version:     2.0-alfa-1
+ * Version:     2.0-alfa-2
  * Text Domain: bbp-digest
  * Domain Path: /languages/
  * License:     GPL
@@ -71,13 +71,17 @@ register_uninstall_hook( __FILE__, 'bbp_digest_uninstall' );
  */
 function bbp_digest_init() {
 	/* Show one-click subscription */
-	if ( bbp_is_single_forum() || is_user_logged_in() ) {
+	if ( is_user_logged_in() && bbp_digest_is_it_active( '_bbp_digest_show_one_click' ) ) {
 		add_action( 'bbp_head', 'bbp_digest_head_scripts' );
 		add_action( 'bbp_template_after_topics_loop', 'bbp_digest_one_click_subscription' );
 	}
 
 	/* Handle one-click subscription */
 	add_action( 'wp_ajax_dim-bbp-digest-subscription', 'bbp_digest_one_click_ajax_handle' );
+
+	/* On admin, load admin file */
+	if ( is_admin() )
+		require_once( dirname( __FILE__ ) . '/inc/admin.php' );
 }
 add_action( 'init', 'bbp_digest_init' );
 
@@ -215,6 +219,20 @@ function bbp_digest_one_click_ajax_handle() {
 	require_once( dirname( __FILE__ ) . '/inc/one-click-handle.php' );
 	/* Do handling */
 	bbp_digest_do_one_click_ajax_handle();
+}
+
+/**
+ * Checks if feature is enabled.
+ *
+ * @since 2.0
+ * 
+ * @uses get_option() To get the requested option
+ *
+ * @param string $option Name of the option
+ * @return bool Is feature enabled or not
+ */
+function bbp_digest_is_it_active( $option ) {
+	return (bool) get_option( $option );
 }
 
 /**
