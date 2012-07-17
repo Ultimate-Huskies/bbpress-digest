@@ -79,9 +79,13 @@ function bbp_digest_init() {
 	/* Handle one-click subscription */
 	add_action( 'wp_ajax_dim-bbp-digest-subscription', 'bbp_digest_one_click_ajax_handle' );
 
-	/* On admin, load admin file */
-	if ( is_admin() )
+	/* On admin, load admin functions */
+	if ( is_admin() ) {
+		/* Load translations */
+		bbp_digest_load_textdomain();
+		/* Load file */
 		require_once( dirname( __FILE__ ) . '/inc/admin.php' );
+	}
 }
 add_action( 'init', 'bbp_digest_init' );
 
