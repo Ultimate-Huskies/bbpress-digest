@@ -53,8 +53,8 @@ function bbp_digest_display_one_click_subscription() {
 	$profile_url = bbp_get_user_profile_edit_url( $user_id ) . '#bbp-digest-check-row';
 
 	/* Setup texts */
-	$sub_text = __( '<a href="%1$s" class="%2$s">Include topics from this forum to your daily digest</a> (<a href="%3$s">edit settings</a>)', 'bbp-digest' );
-	$unsub_text = __( 'Topics from this forum are included in your daily digest (<a href="%1$s" class="%2$s">remove </a> | <a href="%3$s">edit settings</a>)', 'bbp-digest' );
+	$sub_text = __( '<a href="%1$s" class="%2$s">Include topics from this forum to the digest emails</a> (<a href="%3$s">edit settings</a>)', 'bbp-digest' );
+	$unsub_text = __( 'Topics from this forum are included in digest emails (<a href="%1$s" class="%2$s">remove </a> | <a href="%3$s">edit settings</a>)', 'bbp-digest' );
 
 	/* Prepare Javascript variables */
 	$localizations = array(
