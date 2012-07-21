@@ -14,6 +14,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Handle one-click subscription
  *
  * @since 2.0
+ *
+ * @uses bbp_get_current_user_id() To get ID of current user
+ * @uses current_user_can() To check if the current user can edit user
+ * @uses bbp_get_forum() To get forum's data
+ * @uses check_ajax_referer() To check nonce
+ * @uses get_user_meta() To get user's digest settings
+ * @uses current_time() To get current UNIX time
+ * @uses add_user_meta() To save user's setting
+ * @uses update_user_meta() To update user's setting
+ * @uses delete_user_meta() To delete user's setting
  */
  function bbp_digest_do_one_click_ajax_handle() {
 	/* Get current user's ID */
@@ -92,6 +102,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		elseif ( '' == $new_meta_value && $meta_value )
 			delete_user_meta( $user_id, $meta_key, $meta_value );
 	}
-	
+
 	die( '1' );
 }

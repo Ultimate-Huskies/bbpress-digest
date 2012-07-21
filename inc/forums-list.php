@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Based on BBP_Walker_Dropdown()
  *
  * @since 1.0
+ *
+ * @uses Walker
  */
 class BBP_Digest_Walker_Checkboxes extends Walker {
 	/**
@@ -40,6 +42,8 @@ class BBP_Digest_Walker_Checkboxes extends Walker {
 	 * Set the tree_type
 	 *
 	 * @since 1.0
+	 *
+	 * @uses bbp_get_forum_post_type() To get forum post type name
 	 */
 	function BBP_Digest_Walker_Checkboxes() {
 		$this->tree_type = bbp_get_forum_post_type();

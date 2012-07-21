@@ -14,6 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Display link for one-click subscription
  *
  * @since 2.0
+ *
+ * @uses bbp_is_single_forum() To check if it's single forum
+ * @uses is_user_logged_in() To check if current visitor is logged in
+ * @uses bbp_get_current_user_id() To get ID of current user
+ * @uses get_user_meta() To get user's digest settings
+ * @uses bbp_get_forum_id() To get current forum's ID
+ * @uses bbp_get_user_profile_edit_url() To get URL of user's settings
+ * @uses wp_print_scripts() To load wpLists file
+ * @uses bbp_get_forum_permalink() To get URL of a forum
+ * @uses esc_url() To escape URL
+ * @uses wp_nonce_url() To add nonce to the URL
+ * @uses add_query_arg() To add query arguments to the URL
  */
 function bbp_digest_display_one_click_subscription() {
 	/* Bail if not viewing a single forum or not logged in */
@@ -24,7 +36,7 @@ function bbp_digest_display_one_click_subscription() {
 	$user_id = bbp_get_current_user_id();
 
 	/* Get user's settings */
-	$bbp_digest_time = get_user_meta( $user_id, 'bbp_digest_time', true );
+	$bbp_digest_time   = get_user_meta( $user_id, 'bbp_digest_time',   true );
 	$bbp_digest_forums = get_user_meta( $user_id, 'bbp_digest_forums', true );
 
 	/* Bail if user subscribed to all */
