@@ -214,7 +214,7 @@ class BBP_Digest_Event {
 						$topic_list = md5( serialize( $user_forums ) );
 
 						/* Check if topic list is already created & send it, otherwise create it & send it */
-						if ( $$topic_list ) {
+						if ( isset( $$topic_list ) && $$topic_list ) {
 							/* Send notification email */
 							wp_mail( $user->user_email, $subject, $message . $$topic_list );
 						} else {
