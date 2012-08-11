@@ -3,18 +3,18 @@ Contributors: dimadin
 Donate link: http://blog.milandinic.com/donate/
 Tags: bbPress, digest, notification, notifications
 Requires at least: 3.1
-Tested up to: 3.3.1
+Tested up to: 3.4.1
 Stable tag: 1.0
 
-Send daily digest with forum's active topics.
+Send digests with forum's active topics.
 
 == Description ==
 
 [Plugin homepage](http://blog.milandinic.com/wordpress/plugins/bbpress-digest/) | [Plugin author](http://blog.milandinic.com/) | [Donate](http://blog.milandinic.com/donate/)
 
-This plugin enables sending of a daily digest with a list of topics active on a bbPress-powered forum in the last 24 hours.
+This plugin enables sending of a digests with a list of topics active on a bbPress-powered forum in the last 24 hours or 7 days.
 
-Users are able to choose on their profile edit pages (both built-in and from bbPress) whether or not they want to receive digest, at what time of the day, and should digest include topics from all forums or only selected ones.
+Users are able to choose on their profile edit pages (both built-in and from bbPress) whether or not they want to receive digest, at what time of the day, at which day of the week (if they receive weekly digest), and should digest include topics from all forums or only selected ones.
 
 It requires that cron runs regularly at least once an hour.
 
@@ -26,6 +26,7 @@ If you are translator, you can translate it to your language and send translatio
 
 1. Upload `bbpress-digest` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
+3. You can change default options on 'bbPress Settings' page
 
 == Screenshots ==
 
@@ -33,3 +34,23 @@ If you are translator, you can translate it to your language and send translatio
 2. User settings with subscription deselected
 3. User settings with subscription selected, which includes all forums
 4. User settings with subscription selected, which includes only forums chosen by user
+5. User settings with subscription selected, with weekly interval enabled
+6. One-click forum subscription
+7. General settings
+
+== Changelog ==
+
+= 2.0 =
+* Released on 11th August 2012
+* Introduced optional weekly digest.
+* Introduced optional one-click subscription from forums pages.
+* Added settings for introduced features.
+* Moved event to a class to be able to handle both periods.
+* Moved to getting IDs instead of whole data when querying active topics for better performance.
+* Improved profile fields behavior.
+* Improved documentation.
+* Added partial Italian translation (thanks Davide Vecchini).
+
+= 1.0 =
+* Released on 29th February 2012
+* Initial release

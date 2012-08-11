@@ -45,7 +45,7 @@ function bbp_digest_activation() {
 register_activation_hook( __FILE__, 'bbp_digest_activation' );
 
 /**
- * Unschedule bbPress Digest event on activation
+ * Unschedule bbPress Digest event on deactivation
  *
  * @since 1.0
  *
@@ -66,6 +66,7 @@ register_deactivation_hook( __FILE__, 'bbp_digest_deactivation' );
  * @since 1.0
  *
  * @uses delete_metadata() To delete all users meta data
+ * @uses delete_option() To delete all site settings
 */
 function bbp_digest_uninstall() {
 	/* Remove users settings */
@@ -114,6 +115,7 @@ add_action( 'init', 'bbp_digest_init' );
  *
  * @uses is_textdomain_loaded() To check if translation is loaded
  * @uses load_plugin_textdomain() To load translation file
+ * @uses plugin_basename() To get plugin's file name
  */
 function bbp_digest_load_textdomain() {
 	/* If translation isn't loaded, load it */
