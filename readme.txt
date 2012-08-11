@@ -4,7 +4,7 @@ Donate link: http://blog.milandinic.com/donate/
 Tags: bbPress, digest, notification, notifications
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.0
+Stable tag: 2.0
 
 Send digests with forum's active topics.
 
