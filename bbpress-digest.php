@@ -15,7 +15,7 @@
  * Description: Send digests with forum's active topics.
  * Author:      Milan Dinić
  * Author URI:  http://blog.milandinic.com/
- * Version:     2.0
+ * Version:     2.1-alpha-1
  * Text Domain: bbp-digest
  * Domain Path: /languages/
  * License:     GPL
