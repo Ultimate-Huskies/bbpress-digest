@@ -40,6 +40,10 @@ If you are translator, you can translate it to your language and send translatio
 
 == Changelog ==
 
+= 2.1 =
+* Released on 
+* Maped bbPress Digest settings capability. Fixed missing settings in new bbPress version.
+
 = 2.0 =
 * Released on 11th August 2012
 * Introduced optional weekly digest.

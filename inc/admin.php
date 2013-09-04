@@ -11,6 +11,27 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Map bbPress Digest settings capability.
+ *
+ * @since 2.1
+ *
+ * @see BBP_Admin::map_settings_meta_caps()
+ *
+ * @param array $caps Capabilities for meta capability
+ * @param string $cap Capability name
+ * @param int $user_id User id
+ * @param mixed $args Arguments
+ * @return array Actual capabilities for meta capability
+ */
+function bbp_digest_map_settings_cap( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+	if ( 'bbp_settings_digest' == $cap )
+		$caps = array( bbpress()->admin->minimum_capability );
+
+	return $caps;
+}
+add_filter( 'bbp_map_meta_caps', 'bbp_digest_map_settings_cap', 10, 4 );
+
+/**
  * Add bbPress Digest settings section.
  *
  * @since 2.0
