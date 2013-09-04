@@ -44,6 +44,7 @@ If you are translator, you can translate it to your language and send translatio
 * Released on 
 * Maped bbPress Digest settings capability. Fixed missing settings in new bbPress version.
 * Removed profile settings made for core from bbPress user edit page. Fixed double profile settings on bbPress user edit page.
+* Improved profile settings saving. Fixed issue where forums wouldn't be unselected if all forums or unsubsciption is chosen later.
 
 = 2.0 =
 * Released on 11th August 2012

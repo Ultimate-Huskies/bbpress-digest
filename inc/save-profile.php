@@ -61,7 +61,7 @@ function bbp_digest_do_save_profile_fields( $user_id ) {
 			update_user_meta( $user_id, $meta_key, $new_meta_value );
 
 		/* If there is no new meta value but an old value exists, delete it. */
-		elseif ( '' == $new_meta_value && isset( $meta_value ) && strlen( $meta_value ) > 0 )
+		elseif ( '' == $new_meta_value && isset( $meta_value ) && ( is_array( $meta_value ) || strlen( $meta_value ) > 0 ) )
 			delete_user_meta( $user_id, $meta_key, $meta_value );
 	}
 	/* Workaround when 0 is POSTed by tom {@link http://www.php.net/manual/en/types.comparisons.php#53926} */
