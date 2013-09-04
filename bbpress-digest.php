@@ -189,6 +189,10 @@ add_action( 'bbp_digest_event', 'bbp_digest_event' );
  * @param object $user Viewed user's data
  */
 function bbp_digest_profile_fields( $user ) {
+	/* Don't show on bbPress user edit page, we have special function */
+	if ( bbp_is_single_user_edit() )
+		return;
+
 	/* Load translations */
 	bbp_digest_load_textdomain();
 	/* Load file with forum list generator */
