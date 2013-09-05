@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Create HTML checkboxes list of bbPress forums.
  *
- * Based on BBP_Walker_Dropdown()
+ * @see BBP_Walker_Dropdown()
  *
  * @since 1.0
  *
@@ -42,33 +42,38 @@ class BBP_Digest_Walker_Checkboxes extends Walker {
 	 * Set the tree_type
 	 *
 	 * @since 1.0
+	 * @access public
 	 *
 	 * @uses bbp_get_forum_post_type() To get forum post type name
 	 */
-	function BBP_Digest_Walker_Checkboxes() {
+	public function BBP_Digest_Walker_Checkboxes() {
 		$this->tree_type = bbp_get_forum_post_type();
 	}
 
 	/**
 	 * @see Walker::start_el()
 	 *
-	 * @since bbPress 1.0
+	 * @since 1.0
+	 * @access public
+	 *
+	 * @uses bbp_get_forum_post_type() To get forum post type name
+	 * @uses bbp_is_forum_category() To check if the forum is a category
+	 * @uses current_user_can() To check if the current user can post in
+	 *                           closed forums
+	 * @uses bbp_is_forum_closed() To check if the forum is closed
+	 * @uses apply_filters() Calls 'bbp_digest_walker_checkboxes_post_title'
+	 *                         with the title, output, post, depth and args
 	 *
 	 * @param string $output Passed by reference. Used to append additional
 	 *                        content.
 	 * @param object $post Post data object.
 	 * @param int $depth Depth of post in reference to parent posts. Used
 	 *                    for padding.
+	 * @param int $current_object_id
 	 * @param array $args Uses 'selected_forums' argument for selected forum to set
 	 *                     checked HTML attribute for checkbox.
-	 * @uses bbp_is_forum_category() To check if the forum is a category
-	 * @uses current_user_can() To check if the current user can post in
-	 *                           closed forums
-	 * @uses bbp_is_forum_closed() To check if the forum is closed
-	 * @uses apply_filters() Calls 'bbp_digest_walker_checkboxes_post_title' with the
-	 *                        title, output, post, depth and args
 	 */
-	function start_el( &$output, $post, $depth, $args ) {
+	public function start_el( &$output, $post, $depth = 0, $args = array(), $current_object_id = 0 ) {
 		$pad     = str_repeat( '&nbsp;', $depth * 3 );
 		$output .= $pad . "\t<label for=\"bbp-digest-forum-checkbox-{$post->ID}\"><input type=\"checkbox\" class=\"level-$depth\" name=\"bbp-digest-forums[]\"";
 
@@ -89,9 +94,25 @@ class BBP_Digest_Walker_Checkboxes extends Walker {
  * Output a checkboxes allowing to pick which forum
  * is selected for digest.
  *
- * Based on bbp_get_dropdown()
+ * @see bbp_get_dropdown()
  *
- * @since bbPress 1.0
+ * @since 1.0
+ *
+ * @uses BBP_Digest_Walker_Checkboxes() As the default walker to generate the
+ *                              checkboxes
+ * @uses current_user_can() To check if the current user can read
+ *                           private forums
+ * @uses bbp_get_forum_post_type() To get the forum post type
+ * @uses bbp_get_topic_post_type() To get the topic post type
+ * @uses bbp_get_tab_index() To get tab index of element
+ * @uses bbp_get_public_status_id() To get name of public post status
+ * @uses bbp_get_private_status_id() To get name of private post status
+ * @uses bbp_get_hidden_status_id() To get name of hidden post status
+ * @uses get_posts() To get posts for list
+ * @uses walk_page_dropdown_tree() To generate the checkboxes using the
+ *                                  walker
+ * @uses apply_filters() Calls 'bbp_digest_get_dropdown' with the checkboxes
+ *                        and args
  *
  * @param mixed $args The function supports these args:
  *  - post_type: Post type, defaults to bbp_get_forum_post_type() (bbp_forum)
@@ -119,16 +140,6 @@ class BBP_Digest_Walker_Checkboxes extends Walker {
  *  - disable_categories: Disable forum categories and closed forums?
  *                         Defaults to true. Only for forums and when
  *                         the category option is displayed.
- * @uses BBP_Digest_Walker_Checkboxes() As the default walker to generate the
- *                              checkboxes
- * @uses current_user_can() To check if the current user can read
- *                           private forums
- * @uses bbp_get_forum_post_type() To get the forum post type
- * @uses bbp_get_topic_post_type() To get the topic post type
- * @uses walk_page_dropdown_tree() To generate the checkboxes using the
- *                                  walker
- * @uses apply_filters() Calls 'bbp_digest_get_dropdown' with the checkboxes
- *                        and args
  * @return string The checkboxes
  */
 function bbp_digest_get_dropdown( $args = '' ) {
