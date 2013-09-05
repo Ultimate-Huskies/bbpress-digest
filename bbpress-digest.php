@@ -91,14 +91,19 @@ register_uninstall_hook( __FILE__, 'bbp_digest_uninstall' );
  * @uses is_admin() To check if it's admin page
  */
 function bbp_digest_init() {
-	/* Show one-click subscription */
+	/* One-click subscription */
 	if ( is_user_logged_in() && bbp_digest_is_it_active( '_bbp_digest_show_one_click' ) ) {
-		add_action( 'bbp_head', 'bbp_digest_head_scripts' );
-		add_action( 'bbp_template_after_topics_loop', 'bbp_digest_one_click_subscription' );
-	}
+		/* Show one-click subscription */
+		add_action( 'bbp_template_after_topics_loop'       , 'bbp_digest_one_click_subscription'   );
 
-	/* Handle one-click subscription */
-	add_action( 'wp_ajax_dim-bbp-digest-subscription', 'bbp_digest_one_click_ajax_handle' );
+		/* Handle one-click noscript subscription */
+		add_action( 'bbp_get_request_bbp_digest_add_sub'   , 'bbp_digest_one_click_ajax_handle', 1 );
+		add_action( 'bbp_get_request_bbp_digest_remove_sub', 'bbp_digest_one_click_ajax_handle', 1 );
+
+		/* Handle one-click AJAX subscription */
+		add_action( 'bbp_ajax_bbp_digest_add_sub'          , 'bbp_digest_one_click_ajax_handle'    );
+		add_action( 'bbp_ajax_bbp_digest_remove_sub'       , 'bbp_digest_one_click_ajax_handle'    );
+	}
 
 	/* On admin, load admin functions */
 	if ( is_admin() ) {
