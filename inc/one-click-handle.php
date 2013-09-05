@@ -40,18 +40,18 @@ function bbp_digest_do_one_click_ajax_handle() {
 
 	/* Bail if user can't edit itself */
 	if ( ! current_user_can( 'edit_user', $user_id ) )
-		bbp_digest_one_click_add_error();
+		return bbp_digest_one_click_add_error();
 
 	/* Get forum object */
 	$forum = bbp_get_forum( $forum_id );
 
 	/* Bail if no forum */
 	if ( empty( $forum ) )
-		bbp_digest_one_click_add_error();
+		return bbp_digest_one_click_add_error();
 
 	/* Check nonce */
 	if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'toggle-bbp-digest-sub_' . $forum->ID ) )
-		bbp_digest_one_click_add_error();
+		return bbp_digest_one_click_add_error();
 
 	/* Get user's settings */
 	$bbp_digest_time   = get_user_meta( $user_id, 'bbp_digest_time'  , true );
