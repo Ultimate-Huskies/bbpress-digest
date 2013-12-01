@@ -50,8 +50,13 @@ function bbp_digest_display_bbp_profile_fields() {
 		text-align: right;
 		line-height: 0;
 	}
+	#content #bbp-your-profile fieldset #bbp-digest-when-selection label, #container #bbp-your-profile fieldset #bbp-digest-when-selection label,
+	#content #bbp-your-profile fieldset #bbp-digest-pool-selection label, #container #bbp-your-profile fieldset #bbp-digest-pool-selection label {
+		text-align: left;
+		padding-left: 80px;
+	}
 	#content #bbp-your-profile fieldset #bbp-digest-pool-selection label, #container #bbp-your-profile fieldset #bbp-digest-pool-selection label, #content #bbp-your-profile fieldset #bbp-digest-day-selection label, #container #bbp-your-profile fieldset #bbp-digest-day-selection label {
-		width: 195px;
+		width: 100%;
 	}
 	#content #bbp-your-profile fieldset #bbp-digest-forum-list label, #container #bbp-your-profile fieldset #bbp-digest-forum-list label, #content #bbp-your-profile fieldset #bbp-digest-day-list select, #container #bbp-your-profile fieldset #bbp-digest-day-list select {
 		display:inline;
