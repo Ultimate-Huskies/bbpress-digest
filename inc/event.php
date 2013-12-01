@@ -220,17 +220,21 @@ class BBP_Digest_Event {
 						} else {
 							/* Setup list of topics */
 							$$topic_list = '';
+							$send_email = false;
 
 							/* Go through all topics */
 							foreach ( $topic_ids as $topic_id ) {
 								/* Is topic from forum user selected? */
 								if ( in_array( bbp_get_topic_forum_id( $topic_id ), $user_forums ) ) {
 									$$topic_list .= sprintf( $item_placeholder, bbp_get_topic_title( $topic_id ), bbp_get_topic_last_reply_url( $topic_id ) );
+									$send_email = true;
 								}
 							}
 
 							/* Send notification email */
-							wp_mail( $user->user_email, $subject, $message . $$topic_list );
+							if ( $send_email ) {
+								wp_mail( $user->user_email, $subject, $message . $$topic_list );
+							}
 						}
 					/* Otherwise, send all topics */
 					} else {
