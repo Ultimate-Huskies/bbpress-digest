@@ -129,7 +129,7 @@ class BBP_Digest_Event {
 	 * @uses bbp_get_topic_last_reply_url() To get URL of topic's last reply
 	 * @uses get_user_meta() To get user's digest settings
 	 * @uses bbp_get_topic_forum_id() To get ID of topic's forum
-	 * @uses wp_mail() To send digest email
+	 * @uses BBP_Digest_Event::mail() To send digest email
 	 *
 	 * @param string $period Period for which digest are sent
 	 */
@@ -226,7 +226,7 @@ class BBP_Digest_Event {
 						/* Check if topic list is already created & send it, otherwise create it & send it */
 						if ( isset( $$topic_list ) && $$topic_list ) {
 							/* Send notification email */
-							wp_mail( $user->user_email, $subject, $message . $$topic_list );
+							$this->mail( $user->user_email, $subject, $message . $$topic_list, $user, $topic_ids );
 						} else {
 							/* Setup list of topics */
 							$$topic_list = '';
@@ -243,13 +243,13 @@ class BBP_Digest_Event {
 
 							/* Send notification email */
 							if ( $send_email ) {
-								wp_mail( $user->user_email, $subject, $message . $$topic_list );
+								$this->mail( $user->user_email, $subject, $message . $$topic_list, $user, $topic_ids );
 							}
 						}
 					/* Otherwise, send all topics */
 					} else {
 						/* Send notification email */
-						wp_mail( $user->user_email, $subject, $message . $all_topics_list );
+						$this->mail( $user->user_email, $subject, $message . $all_topics_list, $user, $topic_ids );
 					}
 				}
 			}
@@ -310,5 +310,51 @@ class BBP_Digest_Event {
 			return $topics;
 		else
 			return;
+	}
+
+	/**
+	 * Send email.
+	 *
+	 * @since 2.1
+	 * @access private
+	 *
+	 * @uses wp_mail() To send email.
+	 *
+	 * @param string  $email_address Adress of the receiver.
+	 * @param string  $subject       Subject of the email.
+	 * @param string  $message       Content of the email.
+	 * @param WP_User $user          WP_User object of reciver.
+	 * @param array   $topic_ids     IDs of topics that were active.
+	 */
+	private function mail( $email_address, $subject, $message, $user, $topic_ids ) {
+		/**
+		 * Fires before email is sent.
+		 *
+		 * @since 2.1
+		 *
+		 * @param string           $email_address Adress of the receiver.
+		 * @param string           $subject       Subject of the email.
+		 * @param string           $message       Content of the email.
+		 * @param WP_User          $user          WP_User object of reciver.
+		 * @param array            $topic_ids     IDs of topics that were active.
+		 * @param BBP_Digest_Event $this          BBP_Digest_Event instance, passed by reference.
+		 */
+		do_action( 'bbp_digest_before_mail', $email_address, $subject, $message, $user, $topic_ids, $this );
+
+		wp_mail( $email_address, $subject, $message );
+
+		/**
+		 * Fires after email is sent.
+		 *
+		 * @since 2.1
+		 *
+		 * @param string           $email_address Adress of the receiver.
+		 * @param string           $subject       Subject of the email.
+		 * @param string           $message       Content of the email.
+		 * @param WP_User          $user          WP_User object of reciver.
+		 * @param array            $topic_ids     IDs of topics that were active.
+		 * @param BBP_Digest_Event $this          BBP_Digest_Event instance, passed by reference.
+		 */
+		do_action( 'bbp_digest_after_mail', $email_address, $subject, $message, $user, $topic_ids, $this );
 	}
 }
