@@ -164,7 +164,17 @@ class BBP_Digest_Event {
 					$message = __( "This topics have been active in the last 7 days:\n\n", "bbp-digest" );
 				} else {
 					/* Set subject of email based on current time */
-					if ( date( 'G', $this->current_time ) < apply_filters( 'bbp_digest_time_border', 8 ) ) { // If before 08:00, use yesterday
+					/**
+					 * Filter bordering hour.
+					 *
+					 * Bordering hour is used to decide should title
+					 * include span of one or two days.
+					 *
+					 * @since 1.0
+					 *
+					 * @param int $hour Bordering hour.
+					 */
+					if ( date( 'G', $this->current_time ) < absint( apply_filters( 'bbp_digest_time_border', 8 ) ) ) { // If before 08:00, use yesterday
 						$subject = sprintf( __( 'Active topics for %1$s', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'one day span email title date format', 'bbp-digest' ), $this->yesterday_time ) );
 					} else { // Otherwise, use both
 						$subject = sprintf( _x( 'Active topics for %1$s / %2$s', '1. Yesterday 2. Today', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'two day span yesterday email title date format', 'bbp-digest' ), $this->yesterday_time ), date_i18n( _x( 'd. F Y.', 'one day span today email title date format', 'bbp-digest' ), $this->current_time ) );
