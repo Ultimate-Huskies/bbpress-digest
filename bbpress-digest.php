@@ -64,21 +64,15 @@ register_deactivation_hook( __FILE__, 'bbp_digest_deactivation' );
  * Based on delete_post_meta_by_key()
  *
  * @since 1.0
+ * @deprecated 2.1 Use unistall.php instead.
  *
  * @uses delete_metadata() To delete all users meta data
  * @uses delete_option() To delete all site settings
-*/
+ */
 function bbp_digest_uninstall() {
-	/* Remove users settings */
-	delete_metadata( 'user', null, 'bbp_digest_time',   '', true );
-	delete_metadata( 'user', null, 'bbp_digest_day',    '', true );
-	delete_metadata( 'user', null, 'bbp_digest_forums', '', true );
-
-	/* Remove site's settings */
-	delete_option( '_bbp_digest_show_one_click' );
-	delete_option( '_bbp_digest_enable_weekly' );
+	_deprecated_function( __FUNCTION__, '2.1' );
+	include_once( dirname( __FILE__ ) . '/unistall.php' );
 }
-register_uninstall_hook( __FILE__, 'bbp_digest_uninstall' );
 
 /**
  * Register actions on init hook
