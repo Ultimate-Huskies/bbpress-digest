@@ -126,6 +126,7 @@ function bbp_digest_display_one_click_subscription() {
  *
  * @uses bbp_digest_load_textdomain() To load translation
  * @uses bbp_get_user_profile_edit_url() To get URL of user's settings
+ * @uses bbp_get_current_user_id() To get current user's ID
  * @uses bbp_get_forum_permalink() To get URL of a forum
  * @uses esc_url() To escape URL
  * @uses wp_nonce_url() To add nonce to the URL
@@ -140,7 +141,7 @@ function bbp_digest_get_one_click_link( $forum_id, $action ) {
 	bbp_digest_load_textdomain();
 
 	/* Get link to bbPress Digest section at profile page */
-	$profile_url = bbp_get_user_profile_edit_url() . '#bbp-digest-check-row';
+	$profile_url = bbp_get_user_profile_edit_url( bbp_get_current_user_id() ) . '#bbp-digest-check-row';
 
 	/* Setup texts */
 	$sub_text = __( '<a href="%1$s" class="%2$s">Include topics from this forum to the digest emails</a> (<a href="%3$s">edit settings</a>)', 'bbp-digest' );
