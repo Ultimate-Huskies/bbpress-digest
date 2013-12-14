@@ -325,6 +325,7 @@ class BBP_Digest_Event {
 	 * @param string  $message       Content of the email.
 	 * @param WP_User $user          WP_User object of reciver.
 	 * @param array   $topic_ids     IDs of topics that were active.
+	 * @param string  $period        Period for which digest is sent.
 	 */
 	private function mail( $email_address, $subject, $message, $user, $topic_ids, $period ) {
 		/**
@@ -337,7 +338,7 @@ class BBP_Digest_Event {
 		 * @param string           $message       Content of the email.
 		 * @param WP_User          $user          WP_User object of reciver.
 		 * @param array            $topic_ids     IDs of topics that were active.
-		 * @param array            $period        Period for which digest is sent.
+		 * @param string           $period        Period for which digest is sent.
 		 * @param BBP_Digest_Event $this          BBP_Digest_Event instance, passed by reference.
 		 */
 		do_action( 'bbp_digest_before_mail', $email_address, $subject, $message, $user, $topic_ids, $period, $this );
@@ -354,7 +355,7 @@ class BBP_Digest_Event {
 		 * @param string           $message       Content of the email.
 		 * @param WP_User          $user          WP_User object of reciver.
 		 * @param array            $topic_ids     IDs of topics that were active.
-		 * @param array            $period        Period for which digest is sent.
+		 * @param string           $period        Period for which digest is sent.
 		 * @param BBP_Digest_Event $this          BBP_Digest_Event instance, passed by reference.
 		 */
 		do_action( 'bbp_digest_after_mail', $email_address, $subject, $message, $user, $topic_ids, $period, $this );
