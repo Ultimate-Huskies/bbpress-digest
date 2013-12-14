@@ -226,7 +226,7 @@ class BBP_Digest_Event {
 						/* Check if topic list is already created & send it, otherwise create it & send it */
 						if ( isset( $$topic_list ) && $$topic_list ) {
 							/* Send notification email */
-							$this->mail( $user->user_email, $subject, $message . $$topic_list, $user, $topic_ids );
+							$this->mail( $user->user_email, $subject, $message . $$topic_list, $user, $topic_ids, $period );
 						} else {
 							/* Setup list of topics */
 							$$topic_list = '';
@@ -243,13 +243,13 @@ class BBP_Digest_Event {
 
 							/* Send notification email */
 							if ( $send_email ) {
-								$this->mail( $user->user_email, $subject, $message . $$topic_list, $user, $topic_ids );
+								$this->mail( $user->user_email, $subject, $message . $$topic_list, $user, $topic_ids, $period );
 							}
 						}
 					/* Otherwise, send all topics */
 					} else {
 						/* Send notification email */
-						$this->mail( $user->user_email, $subject, $message . $all_topics_list, $user, $topic_ids );
+						$this->mail( $user->user_email, $subject, $message . $all_topics_list, $user, $topic_ids, $period );
 					}
 				}
 			}
@@ -326,7 +326,7 @@ class BBP_Digest_Event {
 	 * @param WP_User $user          WP_User object of reciver.
 	 * @param array   $topic_ids     IDs of topics that were active.
 	 */
-	private function mail( $email_address, $subject, $message, $user, $topic_ids ) {
+	private function mail( $email_address, $subject, $message, $user, $topic_ids, $period ) {
 		/**
 		 * Fires before email is sent.
 		 *
@@ -337,9 +337,10 @@ class BBP_Digest_Event {
 		 * @param string           $message       Content of the email.
 		 * @param WP_User          $user          WP_User object of reciver.
 		 * @param array            $topic_ids     IDs of topics that were active.
+		 * @param array            $period        Period for which digest is sent.
 		 * @param BBP_Digest_Event $this          BBP_Digest_Event instance, passed by reference.
 		 */
-		do_action( 'bbp_digest_before_mail', $email_address, $subject, $message, $user, $topic_ids, $this );
+		do_action( 'bbp_digest_before_mail', $email_address, $subject, $message, $user, $topic_ids, $period, $this );
 
 		wp_mail( $email_address, $subject, $message );
 
@@ -353,8 +354,9 @@ class BBP_Digest_Event {
 		 * @param string           $message       Content of the email.
 		 * @param WP_User          $user          WP_User object of reciver.
 		 * @param array            $topic_ids     IDs of topics that were active.
+		 * @param array            $period        Period for which digest is sent.
 		 * @param BBP_Digest_Event $this          BBP_Digest_Event instance, passed by reference.
 		 */
-		do_action( 'bbp_digest_after_mail', $email_address, $subject, $message, $user, $topic_ids, $this );
+		do_action( 'bbp_digest_after_mail', $email_address, $subject, $message, $user, $topic_ids, $period, $this );
 	}
 }
