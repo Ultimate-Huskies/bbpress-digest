@@ -131,7 +131,7 @@ class BBP_Digest_Event {
 	 * @uses bbp_get_topic_forum_id() To get ID of topic's forum
 	 * @uses BBP_Digest_Event::mail() To send digest email
 	 *
-	 * @param string $period Period for which digest are sent
+	 * @param string $period Period for which digests are sent
 	 */
 	public function do_event( $period = 'day' ) {
 		/* Setup arguments for user query */
