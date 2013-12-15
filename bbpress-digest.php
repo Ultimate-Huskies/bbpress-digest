@@ -277,7 +277,7 @@ function bbp_digest_one_click_ajax_handle() {
  * Checks if feature is enabled.
  *
  * @since 2.0
- * 
+ *
  * @uses get_option() To get the requested option
  *
  * @param string $option Name of the option

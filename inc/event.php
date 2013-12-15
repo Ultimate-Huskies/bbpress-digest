@@ -24,7 +24,7 @@ function bbp_digest_do_event() {
 
 /**
  * Send digest emails on schedule
- * 
+ *
  * @since 2.0
  */
 class BBP_Digest_Event {
@@ -33,7 +33,7 @@ class BBP_Digest_Event {
 	 * Curent unix time
 	 *
 	 * @var $current_time
-	 * @since 2.0 
+	 * @since 2.0
 	 * @access private
 	 */
 	private $current_time;
@@ -42,7 +42,7 @@ class BBP_Digest_Event {
 	 * Minutes passed since full hour
 	 *
 	 * @var $current_minute
-	 * @since 2.0 
+	 * @since 2.0
 	 * @access private
 	 */
 	private $current_minute;
@@ -51,7 +51,7 @@ class BBP_Digest_Event {
 	 * Seconds passed since full hour
 	 *
 	 * @var $seconds_late
-	 * @since 2.0 
+	 * @since 2.0
 	 * @access private
 	 */
 	private $seconds_late;
@@ -60,7 +60,7 @@ class BBP_Digest_Event {
 	 * Unix time 24 hours ago
 	 *
 	 * @var $yesterday_time
-	 * @since 2.0 
+	 * @since 2.0
 	 * @access private
 	 */
 	private $yesterday_time;
@@ -69,7 +69,7 @@ class BBP_Digest_Event {
 	 * Unix time 7 days ago
 	 *
 	 * @var $week_ago_time
-	 * @since 2.0 
+	 * @since 2.0
 	 * @access private
 	 */
 	private $week_ago_time;
@@ -77,15 +77,15 @@ class BBP_Digest_Event {
 	/**
 	 * Numeric representation of the day of the week
 	 *
-	 * @var $current_day_of_week 
-	 * @since 2.0 
+	 * @var $current_day_of_week
+	 * @since 2.0
 	 * @access private
 	 */
 	private $current_day_of_week;
 
 	/**
 	 * Sets class properties.
-	 * 
+	 *
 	 * @since 2.0
 	 * @access public
 	 */
@@ -154,7 +154,7 @@ class BBP_Digest_Event {
 
 			/* Only proceed further if there are topics */
 			if ( $topic_ids ) {
-				
+
 				/* Setup texts based on period  */
 				if ( 'week' == $period ) {
 					/* Set subject of email */
@@ -183,7 +183,7 @@ class BBP_Digest_Event {
 					/* Set standard message intro */
 					$message = __( "This topics have been active in the last 24 hours:\n\n", "bbp-digest" );
 				}
-				
+
 				/* Set list item placeholder; used because of new line (\n) */
 			$item_placeholder = _x( '%1$s: %2$s
 ', '1. Topic title 2. Topic URL', 'bbp-digest' );
@@ -210,7 +210,6 @@ class BBP_Digest_Event {
 							/* Continue to the next */
 							continue;
 						}
-
 					}
 
 					/* Continue if user not from this day */
@@ -272,7 +271,7 @@ class BBP_Digest_Event {
 	 * @uses get_posts() To get topics IDs
 	 *
 	 * @param string $period Period for which topics are queried
-	 * @return array $topics List of topics IDs 
+	 * @return array $topics List of topics IDs
 	 */
 	private function get_topics( $period = 'day' ) {
 		/* Setup topic IDs array */
