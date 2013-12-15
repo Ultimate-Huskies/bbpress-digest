@@ -3,8 +3,8 @@ Contributors: dimadin
 Donate link: http://blog.milandinic.com/donate/
 Tags: bbPress, digest, notification, notifications
 Requires at least: 3.1
-Tested up to: 3.4.1
-Stable tag: 2.0
+Tested up to: 3.8
+Stable tag: 2.1
 
 Send digests with forum's active topics.
 
