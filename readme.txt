@@ -41,14 +41,17 @@ If you are translator, you can translate it to your language and send translatio
 == Changelog ==
 
 = 2.1 =
-* Released on 
-* Maped bbPress Digest settings capability. Fixed missing settings in new bbPress version.
+* Released on 15th December 2013
+* Mapped bbPress Digest settings capability. Fixed missing settings in new bbPress version.
 * Removed profile settings made for core from bbPress user edit page. Fixed double profile settings on bbPress user edit page.
 * Improved profile settings saving. Fixed issue where forums wouldn't be unselected if all forums or unsubsciption is chosen later.
 * Fixed notice received for forum list selector.
 * Improved documentation for forum list functions.
 * Replaced one-click Javascript handler with new one based on new bbPress code. Fixed handler that didn't work.
 * Added noscript one-click handler.
+* Improved sending of email so that it sends only when there are topics.
+* Moved sending of emails to separate method to allow better customization.
+* Moved uninstall function to uninstall.php for better performance.
 
 = 2.0 =
 * Released on 11th August 2012
