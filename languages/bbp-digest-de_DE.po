@@ -1,0 +1,319 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bbPress Digest v2.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-01-10 22:42:07+0000\n"
+"Last-Translator: Clemens Brummer <clemens.brummer@googlemail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#. translators: plugin header field 'Name'
+#: bbpress-digest.php:0
+#@ bbp-digest
+msgid "bbPress Digest"
+msgstr "Forenbenachrichtigung"
+
+#. translators: plugin header field 'PluginURI'
+#: bbpress-digest.php:0
+#@ bbp-digest
+msgid "http://blog.milandinic.com/wordpress/plugins/bbpress-digest/"
+msgstr "http://blog.milandinic.com/wordpress/plugins/bbpress-digest/"
+
+#. translators: plugin header field 'Description'
+#: bbpress-digest.php:0
+#@ bbp-digest
+msgid "Send digests with forum's active topics."
+msgstr "Sende Zusammenfassungen von aktiven Forenbeiträgen."
+
+#. translators: plugin header field 'Author'
+#: bbpress-digest.php:0
+#@ bbp-digest
+msgid "Milan Dinić"
+msgstr "Milan Dinić"
+
+#. translators: plugin header field 'AuthorURI'
+#: bbpress-digest.php:0
+#@ bbp-digest
+msgid "http://blog.milandinic.com/"
+msgstr "http://blog.milandinic.com/"
+
+#. translators: plugin header field 'Version'
+#: bbpress-digest.php:0
+#@ bbp-digest
+msgid "2.1"
+msgstr "2.1"
+
+#: bbpress-digest.php:153
+#@ bbp-digest
+msgctxt "plugin actions link"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: bbpress-digest.php:154
+#@ bbp-digest
+msgid "Donate"
+msgstr "Spenden"
+
+#: inc/admin.php:49
+#@ bbp-digest
+msgctxt "settings section title"
+msgid "bbPress Digest Settings"
+msgstr "bbPress Digest Einstellungen"
+
+#: inc/admin.php:75
+#@ bbp-digest
+msgid "Show one-click subscription"
+msgstr "Zeige Schaltfläche für Forenabonnement"
+
+#: inc/admin.php:82
+#@ bbp-digest
+msgid "Show weekly digest option"
+msgstr "Zeige Option für wöchentliche Zusammenfassung"
+
+#: inc/admin.php:104
+#@ bbp-digest
+msgid "bbPress Digest settings for enabling features"
+msgstr "bbPress Digest Einstellungen für Funtkionsaktivierung"
+
+#: inc/admin.php:122
+#@ bbp-digest
+msgid "Allow users to include forum in a digest from a single forum page"
+msgstr "Erlaube es Nutzern einzelne Foren zu abonnieren"
+
+#: inc/admin.php:140
+#@ bbp-digest
+msgid "Allow users to chose do they want to receive digest once weekly instead of once daily"
+msgstr "Erlaube es Nutzern wöchentliche anstatt tägliche Zusammenfassungen zu bekommen"
+
+#: inc/bbp-profile.php:71
+#: inc/wp-profile.php:43
+#@ bbp-digest
+msgid "bbPress Digest Emails"
+msgstr "Forenbenachrichtigungen"
+
+#: inc/bbp-profile.php:76
+#: inc/wp-profile.php:51
+#@ bbp-digest
+msgctxt "checkbox label"
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/bbp-profile.php:77
+#: inc/wp-profile.php:52
+#@ bbp-digest
+msgid "Check if you want to receive daily digest with active forum topics for that day."
+msgstr "Ankreuzen um Forenbenachrichtigungen zu erhalten."
+
+#: inc/bbp-profile.php:85
+#: inc/wp-profile.php:64
+#@ bbp-digest
+msgctxt "radio button label"
+msgid "Daily"
+msgstr "Täglich"
+
+#: inc/bbp-profile.php:86
+#: inc/wp-profile.php:65
+#@ bbp-digest
+msgctxt "radio button label"
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+#: inc/bbp-profile.php:87
+#: inc/wp-profile.php:66
+#@ bbp-digest
+msgid "Choose should you receive digest once daily or once weekly."
+msgstr "Wähle zwischen täglich oder wöchentlich.\n"
+
+#: inc/bbp-profile.php:105
+#: inc/wp-profile.php:84
+#@ bbp-digest
+msgid "Choose on which day of a week you want to receive a digest."
+msgstr "Wähle an welchem Tag du Zusammenfassungen erhalten möchtest."
+
+#: inc/bbp-profile.php:113
+#: inc/wp-profile.php:96
+#@ bbp-digest
+msgid "Digests should be sent at this time:"
+msgstr "Zusammenfassung sollte um diese Zeit gesendet werden:"
+
+#: inc/bbp-profile.php:120
+#: inc/wp-profile.php:103
+#, php-format
+#@ bbp-digest
+msgid "Select the hour of the day when you want to receive digest emails. Current time is <code>%1$s</code>."
+msgstr ""
+"Wähle die Stunde des Tages. \n"
+"Aktuelle Zeit ist <code>%1$s</code>."
+
+#: inc/bbp-profile.php:120
+#: inc/wp-profile.php:103
+#@ bbp-digest
+msgctxt "current time date format"
+msgid "Y-m-d G:i:s"
+msgstr "d.m.Y G:i:s"
+
+#: inc/bbp-profile.php:125
+#: inc/wp-profile.php:112
+#@ bbp-digest
+msgctxt "radio button label"
+msgid "All"
+msgstr "Alle"
+
+#: inc/bbp-profile.php:126
+#: inc/wp-profile.php:113
+#@ bbp-digest
+msgid "Only forums I choose"
+msgstr "Nur für ausgewählte Foren"
+
+#: inc/bbp-profile.php:127
+#: inc/wp-profile.php:114
+#@ bbp-digest
+msgid "Choose should digest include topics from all forums or only from selected forums."
+msgstr "Wähle, ob du Zusammenfassung von allen oder nur von ausgewählten Foren erhalten möchtest."
+
+#: inc/bbp-profile.php:137
+#: inc/wp-profile.php:124
+#@ bbp-digest
+msgid "Choose forums which you want to be included in a digest."
+msgstr "Wähle die Foren, welche in deiner Zusammenfassung enthalten sein sollen."
+
+#: inc/event.php:155
+#, php-format
+#@ bbp-digest
+msgid "Active topics for week ending %1$s"
+msgstr "[Ultimate Huskies] Aktive Themen der letzten Woche (bis %1$s)"
+
+#: inc/event.php:155
+#@ bbp-digest
+msgctxt "week span email title date format"
+msgid "d. F Y."
+msgstr "d. F Y"
+
+#: inc/event.php:158
+#@ bbp-digest
+msgid ""
+"This topics have been active in the last 7 days:\n"
+"\n"
+msgstr ""
+"Hallo lieber Husky,\n"
+"\n"
+"die folgenden Beiträge waren in den letzte 7 Tagen aktiv:\n"
+"\n"
+
+#: inc/event.php:172
+#, php-format
+#@ bbp-digest
+msgid "Active topics for %1$s"
+msgstr "[Ultimate Huskies] Aktive Themen vom %1$s"
+
+#: inc/event.php:172
+#@ bbp-digest
+msgctxt "one day span email title date format"
+msgid "d. F Y."
+msgstr "d.m. H:00"
+
+#: inc/event.php:174
+#, php-format
+#@ bbp-digest
+msgctxt "1. Yesterday 2. Today"
+msgid "Active topics for %1$s / %2$s"
+msgstr "[Ultimate Huskies] Aktive Themen vom %1$s bis %2$s"
+
+#: inc/event.php:174
+#@ bbp-digest
+msgctxt "two day span yesterday email title date format"
+msgid "d. F Y."
+msgstr "d.m. H:00"
+
+#: inc/event.php:174
+#@ bbp-digest
+msgctxt "one day span today email title date format"
+msgid "d. F Y."
+msgstr "d.m. H:00"
+
+#: inc/event.php:178
+#@ bbp-digest
+msgid ""
+"This topics have been active in the last 24 hours:\n"
+"\n"
+msgstr ""
+"Hallo lieber Husky,\n"
+"\n"
+"diese Themen waren in den letzen 24 Stunden aktiv:\n"
+"\n"
+
+#: inc/event.php:182
+#, php-format
+#@ bbp-digest
+msgctxt "1. Topic title 2. Topic URL"
+msgid "%1$s: %2$s\n"
+msgstr "%1$s: %2$s\n"
+
+#: inc/forums-list.php:229
+#@ bbp-digest
+msgid "No topics available"
+msgstr "Keine Themen verfügbar"
+
+#: inc/forums-list.php:234
+#@ bbp-digest
+msgid "No forums available"
+msgstr "Keine Foren verfügbar"
+
+#: inc/forums-list.php:239
+#@ bbp-digest
+msgid "None available"
+msgstr "Keine verfügbare"
+
+#: inc/one-click-handle.php:152
+#: inc/one-click-template.php:54
+#@ bbp-digest
+msgid "The request was unsuccessful. Please try again."
+msgstr "Die Anfrage war nicht erfolgreich. Bitte versuche es erneut."
+
+#: inc/one-click-template.php:147
+#, php-format
+#@ bbp-digest
+msgid "<a href=\"%1$s\" class=\"%2$s\">Include topics from this forum to the digest emails</a> (<a href=\"%3$s\">edit settings</a>)"
+msgstr "<a href=\"%1$s\" class=\"%2$s\">Themen dieses Forums zu deiner Emailbenachrichtigung hinzufügen</a> (<a href=\"%3$s\">Einstellungen ändern</a>)"
+
+#: inc/one-click-template.php:148
+#, php-format
+#@ bbp-digest
+msgid "Topics from this forum are included in digest emails (<a href=\"%1$s\" class=\"%2$s\">remove </a> | <a href=\"%3$s\">edit settings</a>)"
+msgstr "Themen für dieses Forum sind in deiner Emailbenachrichtigung enthalten (<a href=\"%1$s\" class=\"%2$s\">entfernen</a> | <a href=\"%3$s\">Einstellung ändern</a>)"
+
+#: inc/wp-profile.php:48
+#@ bbp-digest
+msgctxt "settings field label"
+msgid "Digest emails"
+msgstr "Emailbenachrichtigung"
+
+#: inc/wp-profile.php:60
+#@ bbp-digest
+msgid "Daily or weekly"
+msgstr "Täglich oder wöchentlich"
+
+#: inc/wp-profile.php:93
+#@ bbp-digest
+msgid "Digest time"
+msgstr "Zeit"
+
+#: inc/wp-profile.php:108
+#@ bbp-digest
+msgctxt "settings field label"
+msgid "Forums"
+msgstr "Foren"
+
