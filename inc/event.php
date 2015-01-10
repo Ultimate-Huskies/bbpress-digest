@@ -149,55 +149,65 @@ class BBP_Digest_Event {
 			/* Set to false are there weekly subscribers */
 			$have_for_weekly = false;
 
-			/* Query topics */
-			$topic_ids = $this->get_topics( $period );
+			/* Setup texts based on period  */
+			if ( 'week' == $period ) {
+				/* Set subject of email */
+				$subject = sprintf( __( 'Active topics for week ending %1$s', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'week span email title date format', 'bbp-digest' ), $this->current_time ) );
 
-			/* Only proceed further if there are topics */
-			if ( $topic_ids ) {
-
-				/* Setup texts based on period  */
-				if ( 'week' == $period ) {
-					/* Set subject of email */
-					$subject = sprintf( __( 'Active topics for week ending %1$s', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'week span email title date format', 'bbp-digest' ), $this->current_time ) );
-
-					/* Set standard message intro */
-					$message = __( "This topics have been active in the last 7 days:\n\n", "bbp-digest" );
-				} else {
-					/* Set subject of email based on current time */
-					/**
-					 * Filter bordering hour.
-					 *
-					 * Bordering hour is used to decide should title
-					 * include span of one or two days.
-					 *
-					 * @since 1.0
-					 *
-					 * @param int $hour Bordering hour.
-					 */
-					if ( date( 'G', $this->current_time ) < absint( apply_filters( 'bbp_digest_time_border', 8 ) ) ) { // If before 08:00, use yesterday
-						$subject = sprintf( __( 'Active topics for %1$s', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'one day span email title date format', 'bbp-digest' ), $this->yesterday_time ) );
-					} else { // Otherwise, use both
-						$subject = sprintf( _x( 'Active topics for %1$s / %2$s', '1. Yesterday 2. Today', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'two day span yesterday email title date format', 'bbp-digest' ), $this->yesterday_time ), date_i18n( _x( 'd. F Y.', 'one day span today email title date format', 'bbp-digest' ), $this->current_time ) );
-					}
-
-					/* Set standard message intro */
-					$message = __( "This topics have been active in the last 24 hours:\n\n", "bbp-digest" );
+				/* Set standard message intro */
+				$message = __( "This topics have been active in the last 7 days:\n\n", "bbp-digest" );
+			} else {
+				/* Set subject of email based on current time */
+				/**
+				* Filter bordering hour.
+				*
+				* Bordering hour is used to decide should title
+				* include span of one or two days.
+				*
+				* @since 1.0
+				*
+				* @param int $hour Bordering hour.
+				*/
+				if ( date( 'G', $this->current_time ) < absint( apply_filters( 'bbp_digest_time_border', 8 ) ) ) { // If before 08:00, use yesterday
+					$subject = sprintf( __( 'Active topics for %1$s', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'one day span email title date format', 'bbp-digest' ), $this->yesterday_time ) );
+				} else { // Otherwise, use both
+					$subject = sprintf( _x( 'Active topics for %1$s / %2$s', '1. Yesterday 2. Today', 'bbp-digest' ), date_i18n( _x( 'd. F Y.', 'two day span yesterday email title date format', 'bbp-digest' ), $this->yesterday_time ), date_i18n( _x( 'd. F Y.', 'one day span today email title date format', 'bbp-digest' ), $this->current_time ) );
 				}
 
-				/* Set list item placeholder; used because of new line (\n) */
+				/* Set standard message intro */
+				$message = __( "This topics have been active in the last 24 hours:\n\n", "bbp-digest" );
+			}
+
+			/* Set list item placeholder; used because of new line (\n) */
 			$item_placeholder = _x( '%1$s: %2$s
 ', '1. Topic title 2. Topic URL', 'bbp-digest' );
 
-				/* Setup list of topics */
-				$all_topics_list = '';
 
-				/* Go through all topics */
-				foreach ( $topic_ids as $topic_id ) {
-					$all_topics_list .= sprintf( $item_placeholder, bbp_get_topic_title( $topic_id ), bbp_get_topic_last_reply_url( $topic_id ) );
-				}
+			/* Go through all users */
+			foreach ( $users as $user ) {
 
-				/* Go through all users */
-				foreach ( $users as $user ) {
+				/** cl3br: set $user to wp current user
+				 * wp current user needs to be set so that 
+				 * All private forums of that user are included in the 
+				 * queried topics. Otherwise bbPress will exclude
+				 * topics from private forums.
+				 * @since 1.0
+				 */
+				wp_set_current_user($user->ID);
+
+				/* Query topics */
+				$topic_ids = $this->get_topics( $period );
+
+				/* Only proceed further if there are topics */
+				if ( $topic_ids ) {
+
+					/* Setup list of topics */
+					$all_topics_list = '';
+
+					/* Go through all topics */
+					foreach ( $topic_ids as $topic_id ) {
+						$all_topics_list .= sprintf( $item_placeholder, bbp_get_topic_title( $topic_id ), bbp_get_topic_last_reply_url( $topic_id ) );
+					}
 					/* Get weekly subscription status */
 					$user_day = get_user_meta( $user->ID, 'bbp_digest_day', true );
 

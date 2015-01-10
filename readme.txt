@@ -40,6 +40,9 @@ If you are translator, you can translate it to your language and send translatio
 
 == Changelog ==
 
+= 2.1.1 = 
+* [cl3br] Fixed topic query for privat forums
+
 = 2.1 =
 * Released on 15th December 2013
 * Mapped bbPress Digest settings capability. Fixed missing settings in new bbPress version.
