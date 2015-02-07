@@ -134,10 +134,35 @@ class BBP_Digest_Event {
 	 * @param string $period Period for which digests are sent
 	 */
 	public function do_event( $period = 'day' ) {
+
+		if ( 'week' == $period )
+			$time = $this->week_ago_time;
+		else
+			$time = $this->yesterday_time;
+
 		/* Setup arguments for user query */
 		$user_args = array(
-			'meta_key'   => 'bbp_digest_time',
-			'meta_value' => date( 'H', $this->current_time ), // Only users that should receive in this hour
+			'meta_query' => array(
+				'relation' => 'AND',
+				array(
+					'key'     => 'bbp_digest_time',
+					'compare' => 'EXISTS'
+				),
+				array(
+					'relation' => 'OR',
+					array(
+						'key'     => 'bbp_digest_time',
+						'value'   => date( 'H', $this->current_time ), // Only users that should receive in this hour
+						'compare' => '='
+					),
+					array(
+						'key'     => 'bbp_digest_last_email_time',
+						'value'   => date( 'Y-m-d H:i:s', $time ),
+						'type'    => 'DATETIME',
+						'compare' => '<'
+					)
+				)
+			)
 		);
 
 		/* Query users */
@@ -226,6 +251,7 @@ class BBP_Digest_Event {
 					if ( 'week' == $period && $user_day != $this->current_day_of_week )
 						continue;
 
+					$send_email = false;
 					/* If user folows only selected forums, loop all topics again */
 					if ( $user_forums = get_user_meta( $user->ID, 'bbp_digest_forums', true ) ) {
 
@@ -239,7 +265,6 @@ class BBP_Digest_Event {
 						} else {
 							/* Setup list of topics */
 							$$topic_list = '';
-							$send_email = false;
 
 							/* Go through all topics */
 							foreach ( $topic_ids as $topic_id ) {
@@ -258,7 +283,11 @@ class BBP_Digest_Event {
 					/* Otherwise, send all topics */
 					} else {
 						/* Send notification email */
+						$send_email = true;
 						$this->mail( $user->user_email, $subject, $message . $all_topics_list, $user, $topic_ids, $period );
+					}
+					if($send_email) {
+						update_user_meta($user->ID, 'bbp_digest_last_email_time', date( 'Y-m-d H:i:s', $this->current_time ) );
 					}
 				}
 			}

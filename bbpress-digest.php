@@ -41,6 +41,11 @@ function bbp_digest_activation() {
 	/* Clear the old recurring event and set up a new one */
 	wp_clear_scheduled_hook( 'bbp_digest_event' );
 	wp_schedule_event( $timestamp, 'hourly', 'bbp_digest_event' );
+
+	$users = get_users();
+	foreach($users as $user) {
+		add_user_meta($user->ID, 'bbp_digest_last_email_time', date( 'Y-m-d H:i:s', $current_time ), true);
+	}
 }
 register_activation_hook( __FILE__, 'bbp_digest_activation' );
 

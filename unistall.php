@@ -28,6 +28,7 @@ if ( ! defined( 'ABSPATH' ) || ! defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 delete_metadata( 'user', null, 'bbp_digest_time',   '', true );
 delete_metadata( 'user', null, 'bbp_digest_day',    '', true );
 delete_metadata( 'user', null, 'bbp_digest_forums', '', true );
+delete_metadata( 'user', null, 'bbp_digest_last_email_time', '', true );
 
 /* Remove site's settings */
 delete_option( '_bbp_digest_show_one_click' );
